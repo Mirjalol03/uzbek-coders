@@ -1,0 +1,290 @@
+this.siteBody = $(".site-body");
+this.gotoTop = $("#gotoTop");
+this.gRecaptcha = $(".g-recaptcha");
+this.wrapper = $(".wrapper");
+this.pushDiv = $(".wrapper").find(".push");
+this.mapContainer = $("#map_canvas");
+this.inputs = $("input, textarea, select").not('[type="checkbox"], [type="radio"]');
+
+$(window)
+    .resize(this.windowResize)
+    .scroll(this.windowScroll);
+
+$(window).on("load", function () {
+    handleUserAgent();
+    windowResize();
+    bindEvents();
+    handleSplashScreen();
+});
+
+bindEvents = () => {
+    // Window Events
+    $(window)
+        .resize(this.windowResize)
+        .scroll(this.windowScroll);
+
+    // General Events
+    const $container = $(".wrapper");
+
+    $container.on("click", ".disabled", () => false);
+
+    $(".fancybox").fancybox();
+    setTimeout(function () {
+        AOS.init();
+    }, 400);
+
+    // Chosen
+    // if ($("select").length) {
+    //   $("select").chosen({
+    //     disable_search_threshold: 25,
+    //     search_contains: true,
+    //     placeholder_text_single: "Select an option"
+    //   });
+    // }
+
+    // Accordion
+    $(".faq-title").click(function () {
+        if (
+            !$(this)
+            .parents(".faq-wrap")
+            .hasClass("active")
+        ) {
+            $(".faq-description").slideUp("slow");
+            $(".faq-wrap").removeClass("active");
+            $(this)
+                .parents(".faq-wrap")
+                .find(".faq-description")
+                .slideDown("slow");
+            $(this)
+                .parents(".faq-wrap")
+                .addClass("active");
+        } else {
+            $(this)
+                .parents(".faq-wrap")
+                .find(".faq-description")
+                .slideUp("slow");
+            $(this)
+                .parents(".faq-wrap")
+                .removeClass("active");
+        }
+    });
+
+    // Accordion Ends
+
+    $("a").on("click", function (event) {
+        // Make sure this.hash has a value before overriding default behavior
+        $(this)
+            .parent()
+            .addClass("active");
+        $(this)
+            .parent()
+            .siblings()
+            .removeClass("active");
+        if (this.hash !== "") {
+            // Prevent default anchor click behavior
+            //event.preventDefault();
+            // Store hash
+            var hash = this.hash;
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+            $("html, body").animate({
+                    scrollTop: $(hash).offset().top - 100
+                },
+                800,
+                function () {
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                }
+            );
+        } // End if
+    });
+
+    // Specific Events
+    $("#gotoTop").on("click", () => {
+        $("body, html").animate({
+            scrollTop: 0
+        });
+    });
+
+    $("input, textarea, select").not('[type="checkbox"], [type="radio"]').on({
+            focus: e => {
+                const self = $(e.currentTarget);
+                self.closest(".element").addClass("active");
+            },
+            blur: e => {
+                const self = $(e.currentTarget);
+                if (self.val() !== "") {
+                    self.closest(".element").addClass("active");
+                } else {
+                    self.closest(".element").removeClass("active");
+                }
+            }
+        })
+        .trigger("blur");
+
+    // Reload the current path when changing language instead of redirecting to landing page
+    // Uncomment below and modify languages
+    // $container.on('click', '.language-toggle', function(e) {
+    //   e.preventDefault();
+    //   const $this = $(this);
+    //   const href = $this.attr('href');
+    //   const isEnglish = href.indexOf('/ar') >= 0;
+    //   const locArray = location.pathname.split('/');
+    //   const indexOfIndex = locArray.indexOf('index.php');
+    //   const isDev = indexOfIndex >= 0;
+    //   const index = isDev ? indexOfIndex + 1 : 1;
+    //   if(!isEnglish) {
+    //     locArray = locArray.filter(item => item !== 'ar')
+    //   }
+    //   locArray.splice(index, 0, isEnglish ? 'ar' : '');
+    //   const newHref = locArray.join('/').replace('//', '/');
+    //   location.href = newHref;
+    // });
+
+    // Uncomment below if you need to add google captcha (also in includes/script.php)
+    // => Make sure the SITEKEY is changed below
+    // this.gRecaptcha.each((index, el) => {
+    //   grecaptcha.render(el, {'sitekey' : '6LeB3QwUAAAAADQMo87RIMbq0ZnUbPShlwCPZDTv'});
+    // });
+};
+
+$(".mobile-menu").on("click", function () {
+    if ($(".mobile-nav").hasClass("active")) {
+        $(".mobile-nav").removeClass("active");
+    } else {
+        $(".mobile-nav").addClass("active");
+    }
+});
+
+windowResize = () => {
+    this.screenWidth = $(window).width();
+    this.screenHeight = $(window).height();
+
+    // calculate footer height and assign it to wrapper and push/footer div
+    if ($(".wrapper").find(".push").length) {
+        var footerHeight = $("footer").outerHeight();
+        $(".wrapper").css("margin-bottom", -footerHeight);
+        $(".wrapper")
+            .find(".push")
+            .height(footerHeight);
+    }
+
+    var containerWidth = $("header .container").outerWidth();
+    var blockMargin = ($(window).width() - containerWidth) / 2;
+    var twoColWidth = $(".sub-block .col").outerWidth();
+    var subBlock = $(".sub-block .image");
+    var subBlockAr = $(".arabic .sub-block .image");
+    var imgBlock = $(".image-block.position");
+    var imgBlockAr = $(".arabic .image-block.position");
+    var tutor = $(".image-block.position.for-tutors .left");
+    var tutorAr = $(".arabic .image-block.position.for-tutors .left");
+    var imgCol = $(".image-block.position .col");
+    var innerBanner = $(".inner-banner img");
+    var innerBannerAr = $(".arabic .inner-banner img");
+    var newsList = $(".news-list .container");
+    if (this.screenWidth > 767) {
+        if (!$("body").hasClass("arabic")) {
+            subBlock.css("width", blockMargin + twoColWidth - 51);
+            subBlock.css("left", -blockMargin - 15);
+            imgBlock.css("left", blockMargin + 20);
+            tutor.css("left", -(blockMargin + 20));
+            imgCol.css("width", containerWidth / 2 + blockMargin / 2 - 10);
+            innerBanner.css("margin-left", blockMargin + 20);
+
+            $(".register .inner-banner .caption,.rewards .inner-banner .caption").css(
+                "left",
+                blockMargin + 120
+            );
+
+            $(".news-list .container").css("padding-left", blockMargin + 105);
+        } else {
+            innerBannerAr.css("margin-right", blockMargin + 20);
+            subBlockAr.css("width", blockMargin + twoColWidth - 51);
+            subBlockAr.css("right", -blockMargin - 15);
+            imgBlockAr.css("right", blockMargin + 20);
+            tutorAr.css("right", -(blockMargin + 20));
+            imgCol.css("width", containerWidth / 2 + blockMargin / 2 - 10);
+        }
+    }
+};
+
+windowScroll = () => {
+    const topOffset = $(window).scrollTop();
+
+    $("header").toggleClass("top", topOffset > 100);
+    $("header").toggleClass("sticky", topOffset > 350);
+    if (topOffset > this.previousScroll || topOffset < 250) {
+        $("header").removeClass("sticky");
+    } else if (topOffset < this.previousScroll) {
+        $("header").addClass("sticky");
+        // Additional checking so the header will not flicker
+        if (topOffset > 250) {
+            $("header").addClass("sticky");
+        } else {
+            $("header").removeClass("sticky");
+        }
+    }
+
+    this.previousScroll = topOffset;
+    $("#gotoTop").toggleClass(
+        "active",
+        $(window).scrollTop() > this.screenHeight / 2
+    );
+};
+
+handleSplashScreen = () => {
+    $("body")
+        .find(".logo-middle")
+        .fadeIn(500);
+    $(".site-loader")
+        .delay(1500)
+        .fadeOut(500);
+};
+
+handleUserAgent = () => {
+    // detect mobile platform
+    if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+        $("body").addClass("ios-device");
+    }
+    if (navigator.userAgent.match(/Android/i)) {
+        $("body").addClass("android-device");
+    }
+
+    // detect desktop platform
+    if (navigator.appVersion.indexOf("Win") !== -1) {
+        $("body").addClass("win-os");
+    }
+    if (navigator.appVersion.indexOf("Mac") !== -1) {
+        $("body").addClass("mac-os");
+    }
+
+    // detect IE 10 and 11P
+    if (
+        navigator.userAgent.indexOf("MSIE") !== -1 ||
+        navigator.appVersion.indexOf("Trident/") > 0
+    ) {
+        $("html").addClass("ie10");
+    }
+
+    // detect IE Edge
+    if (/Edge\/\d./i.test(navigator.userAgent)) {
+        $("html").addClass("ieEdge");
+    }
+
+    // Specifically for IE8 (for replacing svg with png images)
+    if ($("html").hasClass("ie8")) {
+        const imgPath = "/themes/theedge/images/";
+        $("header .logo a img,.loading-screen img").attr(
+            "src",
+            `${imgPath}logo.png`
+        );
+    }
+
+    // show ie overlay popup for incompatible browser
+    if ($("html").hasClass("ie9")) {
+        const message = $(
+            '<div class="no-support"> You are using outdated browser. Please <a href="https://browsehappy.com/" target="_blank">update</a> your browser or <a href="https://browsehappy.com/" target="_blank">install</a> modern browser like Google Chrome or Firefox.<div>'
+        );
+        $("body").prepend(message);
+    }
+};
