@@ -179,8 +179,111 @@ header .header .container #text-home-html-text-index .p-text-home-index-html {
     font-size: 20px;
     font-weight: bold;
 }
-.container .consoll .consol2 {
 
+.royxat2 #btn-register-home-index-html {
+    text-align: center;
+}
+.container .youtube-video iframe {
+    width: 100%;
+    margin-bottom: 30px;
+}
+.naqsh-rasm {
+    background-image:url(https://uzbekcoders.uz/frontend/assets/images/uz_home_2.png);
+    width: 100%;
+    background-size: cover;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    padding-top: 40px;
+    height: 440px;
+}
+.naqsh-rasm .rasm-naqsh-opo {
+    width: 100%;
+    height: 480px;
+    background-color: rgba(0, 0, 0, 0.589);
+    margin-top: -40px;
+}
+.naqsh-rasm .rasm-naqsh-opo #dtkt{
+    color: #d18924;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    text-transform: uppercase;
+    padding-top: 100px;
+}
+.naqsh-rasm .rasm-naqsh-opo #p-text-naqsh {
+    color: #fff;
+    font-weight: bold;
+    display: block;
+    font-size: 21px;
+    text-transform: none;
+    margin-top: 20px;
+    text-align: center;
+}
+.border-rasm {
+    border-bottom: #fff 3px solid;
+    width: 170px;
+    margin: auto;
+    margin-top: 20px;
+}
+.naqsh-rasm .rasm-naqsh-opo .container img {
+    width: 140px;
+    margin-left: 43%;
+    margin-top: 60px;
+}
+.h1-text-oxir .container h1 {
+    font-size: 49px;
+    text-align: center;
+    color: #05407b;
+    font-weight: bold;
+    margin-top: 70px;
+}
+.h1-text-oxir .container p {
+    font-size: 30px;
+    color: #000;
+    font-weight: 600;
+    margin-top: 50px;
+    text-align: center;
+}
+.border-rasm2{
+    border-bottom: #000000 solid 2px;
+    width: 100px;
+    margin: auto;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+}
+
+.container .page div img  {
+    background-color: #d18924;
+    border-radius: 25px;
+    padding: 10px; 
+}
+.container .page div {
+    text-align: center;
+}
+.container .page div {
+    width: 26%;
+    margin: auto;
+}
+.container .page div h1 {
+    font-size: 19px;
+    color: #d18924;
+}
+.container .page .page2,.container .page .page3 {
+    margin-top: 40px;
+}
+
+.hamkorlar-img img {
+    max-width: 100%;
+    max-height: 100px;
+    display: initial;
+}
+.hamkorlar-img {
+    float: right;
+    margin: auto;
+    margin-right: 80px;
+    margin-top: 100px;
 }
 @media only screen and (max-width: 600px) {
     .p-text-home-index-html p{
@@ -213,11 +316,33 @@ header .header .container #text-home-html-text-index .p-text-home-index-html {
         margin-left: 38%;
         padding: 10px 0px;
     }
+    .naqsh-rasm .rasm-naqsh-opo .container img {
+        margin-left: 37%;
+    }
   }
   @media only screen and (max-width: 460px) {
       header {
           height: 680px;
       }
+      .naqsh-rasm .rasm-naqsh-opo .container img {
+        margin-left: 30%;
+    }
+    .naqsh-rasm {
+        background-image:url(https://uzbekcoders.uz/frontend/assets/images/uz_home_2.png);
+        width: 100%;
+        background-size: cover;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        padding-top: 40px;
+        height: 460px;
+    }
+    .naqsh-rasm .rasm-naqsh-opo {
+        width: 100%;
+        height: 500px;
+        background-color: rgba(0, 0, 0, 0.589);
+        margin-top: -40px;
+    }
   }
   @media only screen and (max-width: 350px) {
     #btn-register-home-index-html .btn-register-uzbek-index-coders-home {
