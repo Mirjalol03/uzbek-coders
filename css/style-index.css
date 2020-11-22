@@ -1,5 +1,6 @@
  ::selection  {
      background-color: rgba(0, 0, 0, 0.884);
+     color: #fff;
  }
  * {
     margin: 0;
@@ -7,6 +8,7 @@
 }
 body {
     position: relative;
+    font-family: sans-serif;
 }
 .logo-img {
     max-width: 100%;
@@ -32,4 +34,73 @@ body {
 }
 .container #nav {
     text-align: center;
+}
+header {
+    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url("https://uzbekcoders.uz/frontend/assets/images/uz_home.png");
+    background-size: cover;
+}
+#text-home-html-text-index {
+color: #fff;
+padding-top: 40px;
+}
+#kelajak-k-home-index-html {
+    font-size: 45px;
+    font-weight: bold;
+    font-family: "ZonaPro-Bold",sans-serif;
+}
+#kelajak-k-home-index-html2 {
+    font-size: 45px;
+    line-height: 0;
+    margin-top: 9px;
+    font-weight: bold;
+    font-family: "ZonaPro-Bold",sans-serif;
+}
+.p-text-home-index-html p {
+    font-size: 1.5em;
+    font-family: "ZonaPro-Bold",sans-serif;
+}
+.p-text-home-index-html {
+    box-shadow: none;
+    padding-top: 10px;
+}
+#btn-register-home-index-html {
+    padding-top: 40px;
+    padding-bottom: 110px;
+    
+}
+#btn-register-home-index-html .btn-register-uzbek-index-coders-home {
+    font-size: 20px;
+    background-color: #308c86;
+    padding: 20px 45px;
+    border-radius: 60px;
+    text-decoration: none;
+    color: #fff;
+    box-shadow: 0 7px 20px #333;
+    transition: all 0.3s;
+}
+#btn-register-home-index-html .btn-register-uzbek-index-coders-home:hover {
+    background-color: #d18924;
+}
+#btn-next-to-pastga {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0.7;
+    animation: learn-more-btn infinite 0.5s;
+}
+@keyframes learn-more-btn {
+    0% {
+        margin-top: 10px;
+    }
+    34% {
+        margin-top: 10px;
+    }
+    68% {
+        margin-bottom: 10px;
+    }
+    100% {
+        margin-bottom: 10px;
+    }
 }
