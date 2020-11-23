@@ -280,10 +280,87 @@ header .header .container #text-home-html-text-index .p-text-home-index-html {
     display: initial;
 }
 .hamkorlar-img {
-    float: right;
     margin: auto;
-    margin-right: 80px;
     margin-top: 100px;
+    margin-left:70%;
+}
+.back-oxir{
+    background-color: rgba(0, 68, 255, 0.767);
+    width: 100%;
+} 
+.oxir-div-l {
+    padding-top: 60px;
+    padding-bottom: 70px;
+}
+.oxir-div-l img {
+    padding-bottom: 10px;
+}
+.white-aloqa-left a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 100;
+    font-size: 24px;
+    
+}
+.white-aloqa-left a:hover{
+    border-bottom: 1px solid #fff;
+}
+#ham-j-q{
+    text-align: right;
+
+}
+#ham-j-q a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 100;
+    font-size: 18px;
+}
+.float-oxir {
+    float: right;
+}
+#bkb a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+}
+#bkb {
+    padding-top: 10px;
+}
+.float-oxir ul{
+    list-style: none;
+    text-decoration: none;
+}
+.float-oxir ul li {
+    display: inline-block;
+    /* margin-top: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    padding: 8px 12px;
+    padding-top: 10px;
+    border-radius: 50%;
+    margin-left: 40px; */
+    transition: 0.5s all;
+    margin: 19px;
+}
+.float-oxir ul li:hover {
+    transform: rotate(360deg)
+}
+.float-oxir ul li a {
+    color: #fff;
+}
+/* @keyframes bizni-k-b:hover {
+    0%{
+        transform: rotate(360deg)
+    }
+} */
+.copyright {
+    background-color: black;
+    padding: 20px;
+}
+.copyright p {
+    color: #fff;
+    text-align: center;
+    font-weight: 300;
 }
 @media only screen and (max-width: 600px) {
     .p-text-home-index-html p{
@@ -320,6 +397,11 @@ header .header .container #text-home-html-text-index .p-text-home-index-html {
         margin-left: 37%;
     }
   }
+  @media only screen and (max-width: 1499px) {
+    .hamkorlar-img{
+        display: none;
+    }
+  }
   @media only screen and (max-width: 460px) {
       header {
           height: 680px;
@@ -342,6 +424,9 @@ header .header .container #text-home-html-text-index .p-text-home-index-html {
         height: 500px;
         background-color: rgba(0, 0, 0, 0.589);
         margin-top: -40px;
+    }
+    .container .page div h1 {
+        margin-left: -10%;
     }
   }
   @media only screen and (max-width: 350px) {
